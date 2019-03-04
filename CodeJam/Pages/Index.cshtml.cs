@@ -23,6 +23,7 @@ namespace CodeJam.Pages
         {
             if (ModelState.IsValid)
             {
+                //cia serviciuskas patirinti atsakymus
                 _databaseRepository.SaveAnswer(answerIn);
             }
             return Page();
