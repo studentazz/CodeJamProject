@@ -6,6 +6,7 @@ namespace CodeJam.ModelIn
     {
         [Required(ErrorMessage = "reikalingas nickname!")]
         [MaxLength(256, ErrorMessage = "Per ilgas nickname: 256")]
+        [RegularExpression(@"\w+", ErrorMessage = "vardas gali buti tik raides")]
         public string Nickname { get; set; }
 
         [Required(ErrorMessage = "reikalingas uzduoties id")]
@@ -14,6 +15,7 @@ namespace CodeJam.ModelIn
 
         public bool IsCorrect { get; set; }
 
+        [Required( ErrorMessage = "nera atsakymo")]
         [MaxLength(20000, ErrorMessage = "per ilgas atsakymas: 20000")]
         public string Answer { get; set; }
     }

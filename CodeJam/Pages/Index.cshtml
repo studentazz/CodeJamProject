@@ -4,18 +4,16 @@
     ViewData["Title"] = "CodeJam konkursas";
 }
 
-
-
 <form action="/" method="post">
     @Html.AntiForgeryToken()
-    <p style="color:red">
+    <div style="color:red">
     @Html.ValidationSummary()
-    </p>
+    </div>
     <div class="form-group">
         <label for="sel1">Užduoties nr:</label>
         <select class="form-control" name="taskId">
-            <option>1</option>
-            <option>2</option>
+            <option>Snieguolė ir 7 nykštukai</option>
+            <option>Dar nežinoma užduotis</option>
         </select>
     </div>
     <div class="form-group">

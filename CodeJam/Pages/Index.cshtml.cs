@@ -1,4 +1,6 @@
 ﻿using CodeJam.ModelIn;
+using CodeJam.Repository;
+using CodeJam.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -15,7 +17,7 @@ namespace CodeJam.Pages
 
         public void OnGet()
         {
-
+            
         }
 
         [ValidateAntiForgeryToken]
@@ -23,8 +25,17 @@ namespace CodeJam.Pages
         {
             if (ModelState.IsValid)
             {
-                //cia serviciuskas patirinti atsakymus
+                var checker = new CheckAnswers();
+                answerIn.IsCorrect = checker.IsAnswerCorrect(answerIn.TaskId, answerIn.Answer);
                 _databaseRepository.SaveAnswer(answerIn);
+                if (answerIn.IsCorrect)
+                {
+                    return RedirectToPage(@"Correct");
+                }
+                else
+                {
+                    return RedirectToPage(@"Incorrect");
+                }
             }
             return Page();
         }

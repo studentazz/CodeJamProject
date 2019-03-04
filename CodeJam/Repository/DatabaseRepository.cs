@@ -1,10 +1,9 @@
 ﻿using System.Data;
 using System.Data.SqlClient;
-using System.Threading.Tasks;
 using CodeJam.ModelIn;
 using Dapper;
 
-namespace CodeJam
+namespace CodeJam.Repository
 {
     public class DatabaseRepository
     {
