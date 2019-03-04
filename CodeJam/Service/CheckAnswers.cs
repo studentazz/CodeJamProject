@@ -4,6 +4,7 @@ namespace CodeJam.Service
 {
     public class CheckAnswers
     {
+
         public bool IsAnswerCorrect(string taskId, string answer)
         {
             string[] lines = answer.Split(Environment.NewLine);

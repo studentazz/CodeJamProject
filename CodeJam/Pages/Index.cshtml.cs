@@ -1,4 +1,5 @@
-﻿using CodeJam.ModelIn;
+﻿using System;
+using CodeJam.ModelIn;
 using CodeJam.Repository;
 using CodeJam.Service;
 using Microsoft.AspNetCore.Mvc;
@@ -25,16 +26,23 @@ namespace CodeJam.Pages
         {
             if (ModelState.IsValid)
             {
-                var checker = new CheckAnswers();
-                answerIn.IsCorrect = checker.IsAnswerCorrect(answerIn.TaskId, answerIn.Answer);
-                _databaseRepository.SaveAnswer(answerIn);
-                if (answerIn.IsCorrect)
+                try
                 {
-                    return RedirectToPage(@"Correct");
+                    var checker = new CheckAnswers();
+                    answerIn.IsCorrect = checker.IsAnswerCorrect(answerIn.TaskId, answerIn.Answer);
+                    _databaseRepository.SaveAnswer(answerIn);
+                    if (answerIn.IsCorrect)
+                    {
+                        return RedirectToPage(@"Correct");
+                    }
+                    else
+                    {
+                        return RedirectToPage(@"Incorrect");
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    return RedirectToPage(@"Incorrect");
+                    ModelState.AddModelError("error", ex.Message);
                 }
             }
             return Page();
