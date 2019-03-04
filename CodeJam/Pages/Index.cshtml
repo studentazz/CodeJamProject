@@ -8,9 +8,9 @@
 
 <form action="/" method="post">
     @Html.AntiForgeryToken()
-    <div style="color:red">
+    <p style="color:red">
     @Html.ValidationSummary()
-    </div>
+    </p>
     <div class="form-group">
         <label for="sel1">Užduoties nr:</label>
         <select class="form-control" name="taskId">
