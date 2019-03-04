@@ -16,7 +16,7 @@ namespace CodeJam.Repository
 
         public void SaveAnswer(AnswerIn answer)
         {
-            string sql = $@"INSERT INTO dbo.CodeJam VALUES (@nickname, @taskId, @isCorrect, @answer, GETDATE())";
+            string sql = $@"INSERT INTO dbo.CodeJam VALUES (1, @nickname, @taskId, @isCorrect, @answer, GETDATE())";
 
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
