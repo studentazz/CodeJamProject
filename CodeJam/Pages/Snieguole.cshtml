@@ -4,7 +4,34 @@
     ViewData["Title"] = "Snieguole";
 }
 
-<h2>Snieguole</h2>
+<h2>Septyntainis nesusipratimas</h2>
 
-<p class="col-md-6">Snieguole moters dienos proga nuo kievieno is septyniu nykstuku gauna po vienoda skaiciu tulpiu ir kiekvienais metais užsirašo, kiek iš viso gavo. Būdama nepataisoma valiūkė, ji užrašo tą skaičių n-taine sistema 😀 gauni listą stringų ir turi pasakyt ar ten gali būti skaičius, kiek gėlių gavo snieguolė, ar neįmanoma</p>
+<p>Artėja moters diena ir septyni nykštukai nori pasveikinti Snieguolę su šia nuostabia proga ir padovanoti po puokštę tulpių. Ilgai negalvoję, jie susitarė, kad kiekvienoje puokštėje bus po vienodai gėlių. Suskaičiavę, kad iš viso reikės K tulpių, jie pavedė Gudručiui prisiminti šį skaičių. Gudrutis, būdamas labai išmoningas nykštukas, užrašė jį N-taine sistema. Šventė jau rytoj, ir Kvailutis, kuriam teko pareiga priskinti tulpių, varto Gudručio užrašus ieškodamas skaičiaus K. Bėda, kad jis nežino, kuris tai skaičius. Padėkite Kvailučiui patikrinti, kurie skaičiai gali būti K.</p>
 
+<h4>Input</h4>
+<p>Pirmoje eilutėje yra skaičius T, nurodantis testcase'ų skaičių. Po to seka T eilučių, o kiekvienoje iš jų - vienas string'as, kuriame gali būti simboliai '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'.</p>
+
+<h4>Output</h4>
+<p>Kiekvienam testcase'ui, tokia pačia tvarka kaip input'e, parašykite po vieną eilutę, kurioje būtų tekstas "TAIP", jei įmanoma, kad duotas skaičius gali būti K, arba "NE" jei taip būti negali.</p>
+
+<h4>Limitai</h4>
+<pre>1 < N < 17
+1 < K < 1000000000000000000<pre>
+
+<h4>Pavyzdys</h4>
+
+<h5>Input</h5>
+<pre>3
+12
+101
+D</pre>
+
+<h5>Output</h5>
+<pre>
+TAIP
+NE
+TAIP</pre>
+
+<p>Pirmu atveju '12' penktainėje sistemoje yra 7, taigi nykštukai gali dovanoti po 1 tulpę.
+Antru atveju '101' nei vienoje sistemoje nuo dvejetainės iki šešioliktainės nėra lygus skaičiui, kuris dalijasi iš 7, todėl atsakymas neigiamas.
+Trečiu atveju 'E' yra keturiolika - po dvi tulpes puokštėje.</p>
