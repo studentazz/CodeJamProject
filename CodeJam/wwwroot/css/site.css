@@ -4,12 +4,10 @@ body {
 }
 
 .container {
-    height: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-direction:column;
-    margin-top:100px;
 }
 
 /* Hide/rearrange for smaller screens */
@@ -19,3 +17,4 @@ body {
         display: none;
     }
 }
+
