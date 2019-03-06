@@ -7,14 +7,28 @@ namespace CodeJam.Service
 
         public bool IsAnswerCorrect(string taskId, string answer)
         {
-            string[] lines = answer.Split(Environment.NewLine);
-
+            answer = answer.Trim(new char[] { '\r', '\n', ' '  });
             switch (taskId)
             {
-                case "1":
+                case "snieguole":
                     break;
-                case "2":
-                    break;
+                case "dazymas":
+                    string correct = 
+@"5
+5
+101
+102
+5003
+261060
+25665";
+                    if (correct == answer)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 default:
                     return false;
             }
