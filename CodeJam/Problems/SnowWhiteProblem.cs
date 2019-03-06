@@ -8,6 +8,7 @@ namespace CodeJam.Problems
         {
             if (output == null) return false;
 
+            output = output.Trim(new char[] { '\r', '\n', ' ' });
             var outputLines = output.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
             var answerLines = Answer.Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
 

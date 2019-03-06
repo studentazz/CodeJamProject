@@ -4,13 +4,14 @@
     {
         public string TaskId => "dazymas";
 
-        public string Input => @"5
-5
-101
-102
-5003
-261060
-25665";
+        public string Input =>
+@"Testas #1: 5
+Testas #2: 5
+Testas #3: 101
+Testas #4: 102
+Testas #5: 5003
+Testas #6: 261060
+Testas #7: 25665";
 
         public bool CheckOutput(string answer)
         {
