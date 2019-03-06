@@ -2,7 +2,7 @@
 @using CodeJam.Problems
 @model IndexModel
 @{
-    ViewData["Title"] = "CodeJam konkursas";
+    ViewData["Title"] = "VismaJam konkursas";
 }
 
 
@@ -14,8 +14,8 @@
     <div class="form-group">
         <label for="sel1">Užduotis:</label>
         <select class="form-control" name="taskId">
-            <option value="@{new SnowWhiteProblem().TaskId}">Septyntainis nesusipratimas</option>
-            <option value="dazymas">Skaičių dažymas</option>
+            <option value="@(new SnowWhiteProblem().TaskId)">Septyntainis nesusipratimas</option>
+            <option value="@(new DigitsPaintingProblem().TaskId)">Skaičių dažymas</option>
         </select>
     </div>
     <div class="form-group">
