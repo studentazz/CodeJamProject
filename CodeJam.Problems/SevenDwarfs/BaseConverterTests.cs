@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using System.Linq;
 using NUnit.Framework;
 
@@ -43,12 +44,72 @@ namespace CodeJam.Problems.SevenDwarfs
         [Test]
         public void RandomDataset()
         {
-            var generator = new Generator(10);
-            var data = Enumerable.Range(0, 100).Select(i => generator.GetRandom()).ToDictionary(i => i, IsDivisibleBy7);
-            Console.WriteLine($"divisible values count: {data.Values.Count(v => v)}");
-            Console.WriteLine(string.Join(Environment.NewLine, data.Keys));
+            var generator = new StringBasedGenerator();
+            var data = Enumerable.Range(0, 1000).Select(i => generator.GetRandom(1, 16)).Distinct().Take(100).ToList();
+            Console.WriteLine($"divisible values count: {data.Count(IsDivisibleBy7)}");
+            Console.WriteLine(string.Join(Environment.NewLine, data));
             Console.WriteLine();
-            Console.WriteLine(string.Join(Environment.NewLine, data.Values));
+            Console.WriteLine(string.Join(Environment.NewLine, data.Select(IsDivisibleBy7)));
+        }
+
+        [Test]
+        public void CreateInputOutput()
+        {
+            var generator = new StringBasedGenerator();
+            var testCaseCount = 100;
+            var inputLines = Enumerable.Range(0, 10000).Select(i => generator.GetRandom(1, 16)).Distinct().Take(testCaseCount).ToList();
+            
+            Console.WriteLine(testCaseCount);
+            foreach (var inputLine in inputLines)
+            {
+                Console.WriteLine(inputLine);
+            }
+            
+            Console.WriteLine();
+
+            for (var i = 0; i < inputLines.Count; i++)
+            {
+                var answer = IsDivisibleBy7(inputLines[i]) ? "TAIP" : "NE";
+                Console.WriteLine($"Testas #{i+1}: {answer}");
+            }
+        }
+
+        [Test]
+        public void ProblemTest()
+        {
+            var problem = new SnowWhiteProblem();
+
+            using (var reader = new StringReader(problem.Input))
+            using (var writer = new StringWriter())
+            {
+                var testCaseCount = int.Parse(reader.ReadLine());
+                for (var i = 0; i < testCaseCount; i++)
+                {
+                    var answer = IsDivisibleBy7(reader.ReadLine()) ? "TAIP" : "NE";
+                    writer.WriteLine($"Testas #{i+1}: {answer}");
+                }
+
+                Assert.IsTrue(problem.CheckOutput(writer.ToString()));
+            }
+        }
+
+        [Test]
+        public void IncorrectProblemTest()
+        {
+            var problem = new SnowWhiteProblem();
+
+            using (var reader = new StringReader(problem.Input))
+            using (var writer = new StringWriter())
+            {
+                var testCaseCount = int.Parse(reader.ReadLine());
+                for (var i = 0; i < testCaseCount; i++)
+                {
+                    var answer = IsDivisibleBy7(reader.ReadLine()) ? "TEIP" : "NE";
+                    writer.WriteLine($"Testas #{i + 1}: {answer}");
+                }
+
+                Assert.IsFalse(problem.CheckOutput(writer.ToString()));
+            }
         }
 
         private bool IsDivisibleBy7(string s)

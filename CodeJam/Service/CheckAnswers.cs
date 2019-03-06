@@ -1,25 +1,22 @@
 ﻿using System;
+using System.Linq;
+using CodeJam.Problems;
 
 namespace CodeJam.Service
 {
     public class CheckAnswers
     {
+        private readonly IProblem[] _problems =
+        {
+            new SnowWhiteProblem()
+        };
 
         public bool IsAnswerCorrect(string taskId, string answer)
         {
-            string[] lines = answer.Split(Environment.NewLine);
+            var problem = _problems.FirstOrDefault(p => p.TaskId.Equals(taskId, StringComparison.OrdinalIgnoreCase));
+            if (problem == null) throw new ArgumentException(nameof(taskId));
 
-            switch (taskId)
-            {
-                case "1":
-                    break;
-                case "2":
-                    break;
-                default:
-                    return false;
-            }
-
-            return false;
+            return problem.CheckOutput(answer);
         }
     }
 }
