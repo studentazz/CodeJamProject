@@ -1,4 +1,5 @@
 ﻿@page
+@using CodeJam.Problems
 @model IndexModel
 @{
     ViewData["Title"] = "CodeJam konkursas";
@@ -13,7 +14,7 @@
     <div class="form-group">
         <label for="sel1">Užduotis:</label>
         <select class="form-control" name="taskId">
-            <option value="snieguole">Snieguolė ir 7 nykštukai</option>
+            <option value="@{new SnowWhiteProblem().TaskId}">Septyntainis nesusipratimas</option>
             <option value="dazymas">Skaičių dažymas</option>
         </select>
     </div>

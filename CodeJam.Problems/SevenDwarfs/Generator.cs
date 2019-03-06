@@ -27,7 +27,7 @@ namespace CodeJam.Problems.SevenDwarfs
         private long RandomLongLogDistributed()
         {
             var digitCount = _random.Next(_minValueMagnitude, 19);
-            var maxVal = (long) Math.Pow(10, digitCount);
+            var maxVal = (long)Math.Pow(10, digitCount);
             return RandomLong(_minValue, maxVal);
         }
 
