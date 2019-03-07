@@ -15,8 +15,6 @@ namespace CodeJam.Pages
 
         public ScoreBoardItem[] Participants { get; set; }
 
-        public DateTime ContestStartTime { get; set; }
-
         public RezultatuLenteleModel(DatabaseRepository databaseRepository)
         {
             _databaseRepository = databaseRepository;
@@ -29,13 +27,33 @@ namespace CodeJam.Pages
                 SnowwhiteIncorrectAttempts = 1,
                 ElectionSolved = false,
                 ElectionIncorrectAttempts = 3
-            } };
+            },
+            new ScoreBoardItem {
+                Username = "Saulius2",
+                Score = 15,
+                Penalty = new TimeSpan(0, 25, 6),
+                SnowwhiteSolved = true,
+                SnowwhiteSolvingTime = new TimeSpan(0, 12, 30),
+                SnowwhiteIncorrectAttempts = 1,
+                ElectionSolved = false,
+                ElectionIncorrectAttempts = 3
+            },
+            new ScoreBoardItem {
+                Username = "Saulius3",
+                Score = 15,
+                Penalty = new TimeSpan(0, 25, 6),
+                SnowwhiteSolved = true,
+                SnowwhiteSolvingTime = new TimeSpan(0, 12, 30),
+                SnowwhiteIncorrectAttempts = 1,
+                ElectionSolved = false,
+                ElectionIncorrectAttempts = 3
+            }};
         }
 
-        public void OnGet(DateTime? startDate, DateTime? endDate)
+        public void OnGet(DateTimeOffset? startDate, DateTimeOffset? endDate)
         {
-            ContestStartTime = startDate ?? DateTime.Now;
-            //Participants = _databaseRepository.GetResults((int)((DateTime.Now - ContestStartTime).TotalSeconds));
+            Participants = _databaseRepository.GetResults(startDate?.ToUnixTimeSeconds() ?? DateTimeOffset.Now.ToUnixTimeSeconds(),
+                endDate?.ToUnixTimeSeconds() ?? DateTimeOffset.MaxValue.ToUnixTimeSeconds());
         }
     }
 }
