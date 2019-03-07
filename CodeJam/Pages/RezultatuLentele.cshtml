@@ -1,0 +1,37 @@
+﻿@page
+@model CodeJam.Pages.RezultatuLenteleModel
+@{
+    ViewData["Title"] = "RezultatuLentele";
+}
+
+<h2>Rezultatai</h2> <br />
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Vieta</th>
+            <th>Nickname</th>
+            <th>Taskai</th>
+            <th>Baudos laikas</th>
+            <th>Snieguolė</th>
+            <th>Snieguolės band.</th>
+            <th>Rinkimai</th>
+            <th>Rinkimai band.</th>
+        </tr>
+    </thead>
+    @{int i = 1; }
+    @foreach (var dalyvis in Model.Participants)
+    {
+    <tr>
+        <td>@(i++)</td>
+        <td>@dalyvis.Username</td>
+        <td>@dalyvis.Score</td>
+        <td>@dalyvis.Penalty</td>
+        <td><img src="~/images/@(dalyvis.SnowwhiteSolved ? "yes.png" : "no.png")"/></td>
+        <td>@dalyvis.SnowwhiteIncorrectAttempts</td>
+        <td><img src="~/images/@(dalyvis.ElectionSolved ? "yes.png" : "no.png")" /></td>
+        <td>@dalyvis.ElectionIncorrectAttempts</td>
+    </tr>
+    }
+</table>
+
