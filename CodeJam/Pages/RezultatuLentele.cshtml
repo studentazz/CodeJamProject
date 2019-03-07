@@ -32,7 +32,7 @@
         <td>@(i++)</td>
         <td>@dalyvis.Username</td>
         <td>@dalyvis.Score</td>
-        <td>@dalyvis.Penalty</td>
+        <td>@dalyvis.Penalty.ToString("c")</td>
         <td><img src="~/images/@(dalyvis.SnowwhiteSolved ? "yes.png" : "no.png")" /></td>
         <td>@dalyvis.SnowwhiteIncorrectAttempts</td>
         <td>@(dalyvis.SnowwhiteSolvingTime?.ToString("c") ?? " - " )</td>
