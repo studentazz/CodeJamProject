@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 using CodeJam.ModelIn;
 using Dapper;
@@ -22,6 +23,11 @@ namespace CodeJam.Repository
             {
                 db.Execute(sql, answer);
             }
+        }
+
+        public ScoreBoardItem[] GetResults(int utcSeconds)
+        {
+            throw new NotImplementedException();
         }
     }
 }
