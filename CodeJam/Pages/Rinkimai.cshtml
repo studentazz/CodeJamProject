@@ -1,0 +1,88 @@
+﻿@page
+@model CodeJam.Pages.RinkimaiModel
+@{
+    ViewData["Title"] = "Rinkimai";
+}
+
+<div style="text-align:left">
+    <h2>Viletonijos miesto mero rinkimai</h2>
+    <p>
+        Tolimiausioje galaktikoje, vienoje iš binarinės saulės sitemų sklando į žemę panaši planeta. <br />
+        Joje yra Viletonijos miestas, kuriame kaip tik vyksta mero rinkimai. <br />
+        Tačiau demokratija ten baigiasi antrame ture, kai žmonės išrenka du kandidatus. <br />
+        Toliau žmonės nusprendė, kad nugalėti gali tik protingiausias! <br />
+        Vienas iš būsimų Viletonijos merų, slaptu tarpgalaktiniu ryšių paprašė jūsų pagalbos nugalint savo priešininką. <br />
+    </p>
+    <h4>Taiskyklės pagal kurias kandidatai kausis:</h4>
+    <p>
+        Visi miesto rinkėjai susikimba rankomis į N ilgio žmonių eilę <br />
+        Kiekvienas miestietis turi balsavimo skaitinę vertę <br />
+        pvz 4 žmonių (N=4) eilė bus aprašoma taip: <br />
+        <span style="font-size:large">1 6 5 2</span> <br />
+
+        Visų eilėje skaičių suma neviršys Int32.MAX konstantos - 2,147,483,647 <br />
+        Visos vertės teigiamos
+    </p>
+
+    <p>
+        Toliau mūšis tarp būsimo mero posto vyksta ėjimais paeiliui. Jūs turite pilną kontrolę vieno iš kandidato veiksmams. <br />
+        Pradedate pirmas, bet surinkus vienodą balsų kiekį, pralaimėsite
+    </p>
+
+    <p>
+        taigi per pirmąjį ėjimą: <br />
+        1. jūs turite teise į bet kurį rinkėją iš jų eilės pažymėdami jį raudona kortele. <br />
+        2. jūsų priešininkas turi teisę nutraukti gyvą grandinę pasiimdamas tik pirmąjį arba paskutinį (ne raudonai pažymėtą) eilės rinkėją.<br />
+        <span style="font-size:large">1 6<span style="background-color:#ff2d2d"> 5 </span></span>
+    </p>
+    <p>
+        visuose sekančiuose ėjimuose: <br />
+        a. jūs vėl galite rinktis žmogų, bet tik esantį greta (šalia) jau pažymėto raudonai. Kadangi dešinėje žmonių jau nebėra, jums belieka vienintelis kelias į kairę. <br />
+        b. jūsų priešininkui vėl galioja ta pati taisyklė, trumpinti eilę pasirenkant pirmą arba paskutinį eilės rinkėją pažymėtą ne raudonai. <br />
+        <span style="font-size:large"><span style="background-color:#ff2d2d"> 6 5 </span></span>
+    </p>
+
+    <p>
+        ėjimai kartojasi tol, kol dar yra nepasirinktų miestiečių eilėje. <br />
+        <br />
+        <br />
+        <h4>užduotis:</h4>
+        kokią didžiausią sumą jūs galite surinkti iš duotos rinkėjų eilės ir ar jos pakaks laimėti rinkimus, taikant aprašytas taisykles? <br />
+        pavyzdyje jūs surinkote 11, o jūsų priešininkas 3 balus. Taigi jūs įtikinamai laimėjote!
+        <br />
+        <h4>Papildomi pavyzdžiai:</h4>
+        <span style="background-color:#ff2d2d">5 6 </span><span style="text-decoration:line-through;color:gray">1 2</span> atveju atsakymas: 11 TAIP<br />
+        <br />
+        <span style="text-decoration:line-through;color:gray">1</span><span style="background-color:#ff2d2d"> 2 3 </span><span style="text-decoration:line-through;color:gray">1</span> atsakymas: 5 TAIP<br />
+        <br />
+        <span style="text-decoration:line-through;color:gray">7 2 1</span><span style="background-color:#ff2d2d"> 9 1 3</span> atsakymas: 13 TAIP<br />
+        <br />
+        Apačioje nuorodoje yra duotas failas kur pirmoje eilutėje nurodytas (šiuo atveju 5) skaičius indikuoja kiek bus miestų pavyzdžių. <br />
+        Visos sekančios (šiuo atveju 5 eilutės) yra duotos rinkėjų eilės, kurias reikės analizuoti pagal aprašytas taisykles. <br />
+<pre>
+5
+1 2 4
+7
+8 8 8 8 8 8
+9 8 7 6 4
+125 130 180
+1 2 1 2
+</pre>
+        <br />
+        Atsakymų tekstas turi būti įklijuotas į atsakymų laukelį pagrindiniame puslapyje, šiuo atveju būtų: <br />
+                                                                                                            <pre>
+Testas #1: 6 TAIP
+Testas #2: 7 TAIP
+Testas #3: 24 NE
+Testas #4: 24 TAIP
+Testas #5: 310 TAIP
+Testas #6: 3 NE
+</pre>
+    </p>
+</div>
+
+<p>Užduoties atvejų failą galite parsisiųsti - <a download href="~/files/rinkimai.txt">ČIA</a></p>
+
+
+
+
