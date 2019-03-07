@@ -32,10 +32,10 @@ namespace CodeJam.Pages
             } };
         }
 
-        public void OnGet(DateTime? startDate)
+        public void OnGet(DateTime? startDate, DateTime? endDate)
         {
             ContestStartTime = startDate ?? DateTime.Now;
-            //Participants = _databaseRepository.GetResults((int)((DateTime.Now - ContestStartTime).TotalSeconds));
+            Participants = _databaseRepository.GetResults((int)((DateTime.Now - ContestStartTime).TotalSeconds));
         }
     }
 }
