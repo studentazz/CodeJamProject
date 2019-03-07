@@ -15,8 +15,10 @@
             <th>Baudos laikas</th>
             <th>Snieguolė</th>
             <th>Snieguolės band.</th>
+            <th>Sprendimo laikas</th>
             <th>Rinkimai</th>
             <th>Rinkimai band.</th>
+            <th>Sprendimo laikas</th>
         </tr>
     </thead>
     @{int i = 1; }
@@ -27,10 +29,12 @@
         <td>@dalyvis.Username</td>
         <td>@dalyvis.Score</td>
         <td>@dalyvis.Penalty</td>
-        <td><img src="~/images/@(dalyvis.SnowwhiteSolved ? "yes.png" : "no.png")"/></td>
+        <td><img src="~/images/@(dalyvis.SnowwhiteSolved ? "yes.png" : "no.png")" /></td>
         <td>@dalyvis.SnowwhiteIncorrectAttempts</td>
+        <td>@(dalyvis.SnowwhiteSolvingTime?.ToString("c") ?? " - " )</td>
         <td><img src="~/images/@(dalyvis.ElectionSolved ? "yes.png" : "no.png")" /></td>
         <td>@dalyvis.ElectionIncorrectAttempts</td>
+        <td>@(dalyvis.ElectionSolvingTime?.ToString("c") ?? " - " )</td>
     </tr>
     }
 </table>

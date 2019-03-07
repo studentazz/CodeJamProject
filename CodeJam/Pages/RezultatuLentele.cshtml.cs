@@ -25,6 +25,7 @@ namespace CodeJam.Pages
                 Score = 15,
                 Penalty = new TimeSpan(0, 25, 6),
                 SnowwhiteSolved = true,
+                SnowwhiteSolvingTime = new TimeSpan(0, 12, 30),
                 SnowwhiteIncorrectAttempts = 1,
                 ElectionSolved = false,
                 ElectionIncorrectAttempts = 3
