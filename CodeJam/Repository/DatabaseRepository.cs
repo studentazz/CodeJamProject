@@ -43,7 +43,7 @@ namespace CodeJam.Repository
                     .GroupBy(a => a.Nickname)
                     .Select(Map)
                     .OrderByDescending(i => i.Score)
-                    .ThenByDescending(i => i.Penalty)
+                    .ThenBy(i => i.Penalty)
                     .ToArray();
             }
 
