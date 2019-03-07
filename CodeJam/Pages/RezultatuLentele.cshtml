@@ -6,7 +6,7 @@
 
 <h2>Rezultatai</h2> <br />
 <div class="row" style="width:100%">
-    <button class="btn btn-info col-md-2" style="margin-right:10px;" onclick="ShowAll()">Rodyti Visus</button>
+    <button class="btn btn-info col-md-2" style="margin-right:10px;" onclick="ShowAll(this)">Rodyti Visus</button>
     <button class="btn btn-info col-md-2" onclick="ShowOne()">Rodyti po viena</button>
 </div>
 
@@ -44,14 +44,16 @@
 </table>
 <script>
     var isShown = false;
-    function ShowAll() {
+    function ShowAll(btn) {
         if (isShown) {
             $("tr#line").hide();
             isShown = false;
+            $(btn).html("Rodyti visus");
         }
         else {
             $("tr#line").show();
             isShown = true;
+            $(btn).html("Slėpti visus");
         }
     }
     function ShowOne() {
