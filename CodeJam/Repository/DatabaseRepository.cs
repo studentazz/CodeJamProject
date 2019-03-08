@@ -76,7 +76,7 @@ namespace CodeJam.Repository
                     .OrderBy(a => a.CreatedDate).ToList();
 
                 var solved = answers.Any(a => a.IsCorrect);
-                var incorrectAttempts = solved ? answers.TakeWhile(a => !a.IsCorrect).Count() : 0;
+                var incorrectAttempts = answers.TakeWhile(a => !a.IsCorrect).Count();
                 var timeTaken = answers.FirstOrDefault(a => a.IsCorrect)?.SubmitDate - startDate;
 
                 return (solved, incorrectAttempts, timeTaken);
