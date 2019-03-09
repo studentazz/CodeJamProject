@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CodeJam.Problems.SevenDwarfs
+namespace CodeJam.Interfaces.SevenDwarfs
 {
     public static class BaseConverter
     {

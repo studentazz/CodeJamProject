@@ -1,6 +1,6 @@
 using System;
 
-namespace CodeJam.Problems.SevenDwarfs
+namespace CodeJam.Interfaces.SevenDwarfs
 {
     public class Generator
     {

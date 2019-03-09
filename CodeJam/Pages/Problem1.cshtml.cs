@@ -2,7 +2,9 @@
 
 namespace CodeJam.Pages
 {
-    public class RinkimaiModel : PageModel
+    
+
+    public class Problem1Model : PageModel
     {
         public void OnGet()
         {

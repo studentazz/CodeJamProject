@@ -1,7 +1,7 @@
 using System;
 using System.Linq;
 
-namespace CodeJam.Problems.SevenDwarfs
+namespace CodeJam.Interfaces.SevenDwarfs
 {
     public class StringBasedGenerator
     {

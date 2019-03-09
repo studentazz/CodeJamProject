@@ -1,4 +1,5 @@
 using CodeJam.Repository;
+using CodeJam.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -19,7 +20,8 @@ namespace CodeJam
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped(s => new DatabaseRepository("Server=tcp:goblindb.database.windows.net,1433;Initial Catalog=datavault;Persist Security Info=False;User ID=goblin;Password=xerofKK33;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"));
+            services.AddScoped(s => new DatabaseRepository(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddSingleton(s => new ProblemContainer());
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -39,5 +41,7 @@ namespace CodeJam
 
             app.UseMvc();
         }
+
+
     }
 }

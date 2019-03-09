@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CodeJam.Repository
+namespace CodeJam.ModelDomain
 {
     public class AnswerOut
     {

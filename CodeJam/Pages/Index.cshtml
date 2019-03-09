@@ -1,5 +1,5 @@
 ﻿@page
-@using CodeJam.Problems
+@using CodeJam.Interfaces
 @model IndexModel
 @{
     ViewData["Title"] = "VismaJam konkursas";
@@ -12,19 +12,19 @@
     @Html.ValidationSummary()
     </div>
     <div class="form-group">
-        <label for="sel1">Užduotis:</label>
-        <select class="form-control" name="taskId">
-            <option value="@(new SnowWhiteProblem().TaskId)">Septyntainis nesusipratimas</option>
-            <option value="@(new DigitsPaintingProblem().TaskId)">Mero rinkimai</option>
+        <label for="sel1">Problem ID:</label>
+        <select class="form-control" name="ProblemId">
+            <option value="@Model.ProblemContainer.Problems[0].Id">@Model.ProblemContainer.Problems[0].Id</option>
+            <option value="@Model.ProblemContainer.Problems[1].Id">@Model.ProblemContainer.Problems[1].Id</option>
         </select>
     </div>
     <div class="form-group">
-        <label for="comment">Jūsų slaptas nickname:</label>
+        <label for="comment">Your secret nickname:</label>
         <input class="form-control" name="nickname" type="text" />
     </div>
     <div class="form-group">
-        <label for="comment">Atsakymas:</label>
+        <label for="comment">Answer:</label>
         <textarea class="form-control" style="width:400px; height:200px" name="answer"></textarea>
     </div>
-    <input type="submit" class="btn btn-default" value="Tikrinti" />
+    <input type="submit" class="btn btn-default" value="Check" />
 </form>

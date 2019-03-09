@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CodeJam.ModelIn;
+using CodeJam.ModelVm;
 using CodeJam.Repository;
 using NUnit.Framework;
 
-namespace CodeJam.Problems
+namespace CodeJam.Interfaces
 {
     [TestFixture]
     public class RepoTests
@@ -28,7 +28,7 @@ namespace CodeJam.Problems
         public async Task InputTest()
         {
             var repo = new DatabaseRepository(ConnStr);
-            repo.SaveAnswer(new AnswerIn {Nickname = "Yo", IsCorrect = true, Answer = "4", TaskId = "snieguole"});
+            repo.SaveAnswer(new AnswerIn {Nickname = "Yo", IsCorrect = true, Answer = "4", ProblemId = "snieguole"});
         }
     }
 }

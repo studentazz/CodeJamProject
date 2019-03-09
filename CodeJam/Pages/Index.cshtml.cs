@@ -1,5 +1,5 @@
 ﻿using System;
-using CodeJam.ModelIn;
+using CodeJam.ModelVm;
 using CodeJam.Repository;
 using CodeJam.Service;
 using Microsoft.AspNetCore.Mvc;
@@ -11,14 +11,14 @@ namespace CodeJam.Pages
     {
         private readonly DatabaseRepository _databaseRepository;
 
-        public IndexModel(DatabaseRepository databaseRepository)
+        public ProblemContainer ProblemContainer { get; set; }
+
+
+        public IndexModel(DatabaseRepository databaseRepository, ProblemContainer problemContainer)
         {
             _databaseRepository = databaseRepository;
-        }
+            ProblemContainer = problemContainer;
 
-        public void OnGet()
-        {
-            
         }
 
         [ValidateAntiForgeryToken]
@@ -28,8 +28,8 @@ namespace CodeJam.Pages
             {
                 try
                 {
-                    var checker = new CheckAnswers();
-                    answerIn.IsCorrect = checker.IsAnswerCorrect(answerIn.TaskId, answerIn.Answer);
+                    var container = new ProblemContainer();
+                    answerIn.IsCorrect = container.IsProblemSolved(answerIn.ProblemId, answerIn.Answer);
                     _databaseRepository.SaveAnswer(answerIn);
                     if (answerIn.IsCorrect)
                     {

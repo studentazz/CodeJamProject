@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using NUnit.Framework;
 
-namespace CodeJam.Problems.SevenDwarfs
+namespace CodeJam.Interfaces.SevenDwarfs
 {
     public class BaseConverterTests
     {
@@ -77,7 +77,7 @@ namespace CodeJam.Problems.SevenDwarfs
         [Test]
         public void ProblemTest()
         {
-            var problem = new SnowWhiteProblem();
+            var problem = new Problem1();
 
             using (var reader = new StringReader(problem.Input))
             using (var writer = new StringWriter())
@@ -89,14 +89,14 @@ namespace CodeJam.Problems.SevenDwarfs
                     writer.WriteLine($"Testas #{i+1}: {answer}");
                 }
 
-                Assert.IsTrue(problem.CheckOutput(writer.ToString()));
+                Assert.IsTrue(problem.IsSoved(writer.ToString()));
             }
         }
 
         [Test]
         public void IncorrectProblemTest()
         {
-            var problem = new SnowWhiteProblem();
+            var problem = new Problem1();
 
             using (var reader = new StringReader(problem.Input))
             using (var writer = new StringWriter())
@@ -108,7 +108,7 @@ namespace CodeJam.Problems.SevenDwarfs
                     writer.WriteLine($"Testas #{i + 1}: {answer}");
                 }
 
-                Assert.IsFalse(problem.CheckOutput(writer.ToString()));
+                Assert.IsFalse(problem.IsSoved(writer.ToString()));
             }
         }
 

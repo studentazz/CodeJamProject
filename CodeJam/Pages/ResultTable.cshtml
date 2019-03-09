@@ -1,0 +1,63 @@
+﻿@page
+@model CodeJam.Pages.ResultTableModel
+@{
+    ViewData["Title"] = "RezultatuLentele";
+}
+
+<h2>Rezultatai</h2> <br />
+<div class="row" style="width:100%">
+    <button class="btn btn-info col-md-2" style="margin-right:10px;" onclick="ShowAll(this)">Show all</button>
+    <button class="btn btn-info col-md-2" onclick="ShowOne()">Show one</button>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Place</th>
+            <th>Nickname</th>
+            <th>Points</th>
+            <th>Total Time</th>
+            <th>@Model.ProblemContainer.Problems[0].Id</th>
+            <th>@Model.ProblemContainer.Problems[0].Id attempts</th>
+            <th>Solved time</th>
+            <th>@Model.ProblemContainer.Problems[0].Id</th>
+            <th>@Model.ProblemContainer.Problems[1].Id attemts</th>
+            <th>Solved time</th>
+        </tr>
+    </thead>
+    @{int i = 1; }
+    @foreach (var part in Model.Participants)
+    {
+    <tr hidden id="line">
+        <td>@(i++)</td>
+        <td>@part.Username</td>
+        <td>@part.Score</td>
+        <td>@part.Penalty.ToString("c")</td>
+        <td><img src="~/images/@(part.SnowwhiteSolved ? "yes.png" : "no.png")" /></td>
+        <td>@part.SnowwhiteIncorrectAttempts</td>
+        <td>@(part.SnowwhiteSolvingTime?.ToString("c") ?? " - " )</td>
+        <td><img src="~/images/@(part.ElectionSolved ? "yes.png" : "no.png")" /></td>
+        <td>@part.ElectionIncorrectAttempts</td>
+        <td>@(part.ElectionSolvingTime?.ToString("c") ?? " - " )</td>
+    </tr>
+    }
+</table>
+<script>
+    var isShown = false;
+    function ShowAll(btn) {
+        if (isShown) {
+            $("tr#line").hide();
+            isShown = false;
+            $(btn).html("Show all");
+        }
+        else {
+            $("tr#line").show();
+            isShown = true;
+            $(btn).html("Hide all");
+        }
+    }
+    function ShowOne() {
+        $("tr:hidden").last().show();
+    }
+</script>
+
