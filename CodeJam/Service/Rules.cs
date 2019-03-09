@@ -33,7 +33,7 @@ namespace CodeJam.Service
         }
 
 
-        //todo: think how could be make it as separate rule
+        //todo: think how could be make it as separate rule 
         public static (bool, int, TimeSpan?) CheckTask(string taskId, List<AnswerOut> answers)
         {
             answers = answers.Where(a => a.TaskId.Equals(taskId, StringComparison.OrdinalIgnoreCase))
