@@ -11,7 +11,5 @@ namespace CodeJam.ModelDomain
         public bool IsCorrect { get; set; }
 
         public DateTime CreatedDate { get; set; }
-
-        public DateTimeOffset SubmitDate => new DateTimeOffset(CreatedDate, TimeSpan.Zero);
     }
 }

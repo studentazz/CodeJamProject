@@ -23,12 +23,11 @@ namespace CodeJam.Pages
             ProblemContainer = problemContainer;
         }
 
-        public void OnGet(string miniPassword, DateTimeOffset? startDate, DateTimeOffset? endDate)
+        public void OnGet(string miniPassword, DateTime? startDate, DateTime? endDate)
         {
             if (!_config.GetValue<bool>("UseResultPassword") || miniPassword == _config.GetValue<string>("ResultTablePassword"))
             {
-                Participants = _databaseRepository.GetResults(startDate?.ToUnixTimeSeconds() ?? DateTimeOffset.MinValue.ToUnixTimeSeconds(),
-                    endDate?.ToUnixTimeSeconds() ?? DateTimeOffset.MaxValue.ToUnixTimeSeconds());
+                Participants = _databaseRepository.GetResults(startDate ?? DateTime.MinValue, endDate ?? DateTime.MaxValue);
             }
         }
     }

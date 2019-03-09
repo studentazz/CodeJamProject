@@ -7,6 +7,7 @@ using CodeJam.ModelVm;
 using CodeJam.Interfaces;
 using Dapper;
 using CodeJam.ModelDomain;
+using CodeJam.Service;
 
 namespace CodeJam.Repository
 {
@@ -61,18 +62,16 @@ namespace CodeJam.Repository
             }
         }
 
-        public ScoreBoardItemVm[] GetResults(long utcSecondsStart, long utcSecondsEnd)
+        public ScoreBoardItemVm[] GetResults(DateTime startDate, DateTime endDate)
         {
-            var startDate = DateTimeOffset.FromUnixTimeSeconds(utcSecondsStart);
-            var endDate = DateTimeOffset.FromUnixTimeSeconds(utcSecondsEnd);
-
+            var problemIds = new ProblemContainer().Problems.Select(p => p.Id);
             using (IDbConnection db = new SqlConnection(_connectionString))
             {
-                var answers = db.Query<AnswerOut>("SELECT * FROM dbo.CodeJam").ToArray();
+                var answers = db.Query<AnswerOut>("SELECT * FROM dbo.CodeJam WHERE [taskId] IN @problemIds", new { problemIds }).ToArray();
 
                 return answers
-                    .Where(a => a.SubmitDate > startDate)
-                    .Where(a => a.SubmitDate < endDate)
+                    .Where(a => a.CreatedDate > startDate)
+                    .Where(a => a.CreatedDate < endDate)
                     .GroupBy(a => a.Nickname)
                     .Select(Map)
                     .OrderByDescending(i => i.Score)
@@ -110,7 +109,7 @@ namespace CodeJam.Repository
 
                 var solved = answers.Any(a => a.IsCorrect);
                 var incorrectAttempts = answers.TakeWhile(a => !a.IsCorrect).Count();
-                var timeTaken = answers.FirstOrDefault(a => a.IsCorrect)?.SubmitDate - startDate;
+                var timeTaken = answers.FirstOrDefault(a => a.IsCorrect)?.CreatedDate - startDate;
 
                 return (solved, incorrectAttempts, timeTaken);
             }
