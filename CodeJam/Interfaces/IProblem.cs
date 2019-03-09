@@ -1,4 +1,4 @@
-﻿namespace CodeJam.Interfaces
+﻿namespace CodeJam.Problems
 {
     public interface IProblem
     {

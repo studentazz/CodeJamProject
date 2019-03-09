@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CodeJam.Interfaces
+namespace CodeJam.Problems
 {
     public class Problem1 : IProblem
     {

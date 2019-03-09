@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using CodeJam.Interfaces;
+using CodeJam.Problems;
 
 namespace CodeJam.Service
 {
