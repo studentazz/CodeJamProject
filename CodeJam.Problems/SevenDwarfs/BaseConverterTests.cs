@@ -10,11 +10,20 @@ namespace CodeJam.Interfaces.SevenDwarfs
         [TestCase("101", 2, 5)]
         [TestCase("1587", 10, 1587)]
         [TestCase("1343", 7, 521)]
+        [TestCase("27CBC", 13, 74684)]
         [TestCase("11a178212bac5", 13, 26485657145615)]
         public void ParseTest(string s, int numBase, long expected)
         {
             Assert.IsTrue(BaseConverter.TryParse(s, numBase, out var result));
             Assert.AreEqual(expected, result);
+        }
+
+        [TestCase("1587", 7, 1587)]
+        [TestCase("27CBC", 12, 26485657145615)]
+        [TestCase("11a178212bac5", 12, 26485657145615)]
+        public void OutOfBoundsParseTest(string s, int numBase, long expected)
+        {
+            Assert.IsFalse(BaseConverter.TryParse(s, numBase, out var result));
         }
 
         [TestCase("101", 2, 5)]
@@ -26,10 +35,12 @@ namespace CodeJam.Interfaces.SevenDwarfs
             Assert.AreEqual(expected.ToUpper(), BaseConverter.ToBase(num, numBase));
         }
 
+        [TestCase("11")]
         [TestCase("101")]
         [TestCase("1011")]
         [TestCase("1587")]
         [TestCase("1343")]
+        [TestCase("27CBC")]
         [TestCase("11a178212bac5")]
         public void IterateBases(string s)
         {
